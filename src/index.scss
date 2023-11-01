@@ -82,7 +82,7 @@ html {
 .gallery {
 	padding: 5rem;
 	display: grid;
-	grid-template-columns: repeat(4, minmax(25rem, 1fr));
+	grid-template-columns: repeat(5, minmax(25rem, 1fr));
 	gap: 2rem;
 
 	@media only screen and (max-width: 1000px) {
