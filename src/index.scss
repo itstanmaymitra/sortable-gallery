@@ -83,7 +83,6 @@ html {
 	padding: 5rem;
 	display: grid;
 	grid-template-columns: repeat(4, minmax(25rem, 1fr));
-	// grid-template-rows: repeat(2, 1fr);
 	gap: 2rem;
 
 	@media only screen and (max-width: 1000px) {
@@ -164,6 +163,10 @@ html {
 				font-size: 2rem;
 				margin-top: 5px;
 			}
+		}
+
+		&--fade {
+			opacity: 0.6;
 		}
 	}
 }

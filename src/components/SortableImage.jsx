@@ -14,7 +14,7 @@ const SortableImage = ({ image, index, overlay, handleCheck, selected }) => {
 		<div
 			className={`gallery__item ${
 				index == 0 ? "gallery__item--feature" : ""
-			}`}
+			} ${selected ? "gallery__item--fade" : ""}`}
 			ref={setNodeRef}
 			{...attributes}
 			{...listeners}
