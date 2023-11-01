@@ -1,4 +1,5 @@
-import ImageIcon from "./assets/icons/image-icon.svg";
+import ImageIcon from "./assets/image-icon.svg";
+import Checkbox from "./assets/checkbox.svg";
 import { useEffect, useState } from "react";
 import {
 	DndContext,
@@ -19,6 +20,7 @@ import SortableImage from "./components/SortableImage";
 
 function App() {
 	const [images, setImages] = useState([]);
+	const [selectedImagesCount, setSelectedImagesCount] = useState(0);
 	const [activeImage, setActiveImage] = useState(null);
 
 	const sensors = useSensors(
@@ -37,6 +39,16 @@ function App() {
 				setImages(data);
 			});
 	}, []);
+
+	useEffect(() => {
+		let count = 0;
+		images.forEach((d) => {
+			if (d.selected) {
+				count++;
+			}
+		});
+		setSelectedImagesCount(count);
+	}, [images]);
 
 	const onDragStart = (e) => {
 		let index;
@@ -70,11 +82,50 @@ function App() {
 		setActiveImage(null);
 	};
 
+	const handleCheck = (event, image) => {
+		const updatedImages = images.map((img) => {
+			if (img.id === image.id) {
+				img.selected = event.target.checked;
+			}
+			return img;
+		});
+
+		setImages(updatedImages);
+	};
+
+	const deleteHandler = () => {
+		setImages((images) => {
+			const updatedImages = images.filter((img) => img.selected == false);
+			return updatedImages;
+		});
+	};
+
 	return (
 		<div className="body">
 			<div className="container">
 				<div className="header">
-					<h1 className="header__text">Gallery</h1>
+					{selectedImagesCount < 1 ? (
+						<h1 className="header__text">Gallery</h1>
+					) : (
+						<>
+							<p>
+								<img src={Checkbox} alt="" />
+
+								<span>
+									{`${selectedImagesCount} File${
+										selectedImagesCount > 1 ? "s" : ""
+									} Selected.`}
+								</span>
+							</p>
+
+							<button
+								onClick={deleteHandler}
+								className="header__btn"
+							>
+								Delete Files
+							</button>
+						</>
+					)}
 				</div>
 
 				<div className="gallery">
@@ -96,6 +147,8 @@ function App() {
 										image={image}
 										index={index}
 										overlay={false}
+										handleCheck={handleCheck}
+										selected={image.selected}
 									/>
 								))}
 						</SortableContext>

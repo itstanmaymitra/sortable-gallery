@@ -1,7 +1,7 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
-const SortableImage = ({ image, index, overlay }) => {
+const SortableImage = ({ image, index, overlay, handleCheck, selected }) => {
 	const { attributes, listeners, setNodeRef, transform, transition } =
 		useSortable({ id: image.id });
 
@@ -24,7 +24,12 @@ const SortableImage = ({ image, index, overlay }) => {
 
 			{!overlay && (
 				<div className="gallery__item--overlay">
-					<input type="checkbox" name={image.id} />
+					<input
+						type="checkbox"
+						name={image.id}
+						onChange={(e) => handleCheck(e, image)}
+						checked={selected}
+					/>
 				</div>
 			)}
 		</div>

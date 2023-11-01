@@ -37,8 +37,41 @@ html {
 }
 
 .header {
-	padding: 2rem 3rem;
+	padding: 0 3rem;
+	height: 7.3rem;
 	border-bottom: 2px solid $border-color;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	&__btn {
+		background-color: #d80032;
+		color: #fff;
+		border: 2px solid #d80032;
+		padding: 1rem 2rem;
+		border-radius: 5px;
+		font-size: 1.5rem;
+		transition: all 0.3s;
+		cursor: pointer;
+
+		&:hover {
+			background-color: #fff;
+			color: #d80032;
+			border: 2px solid #d80032;
+		}
+	}
+
+	& p {
+		font-size: 1.8rem;
+		display: flex;
+		align-items: center;
+
+		& img {
+			height: 2.5rem;
+			width: 2.5rem;
+			margin-right: 5px;
+		}
+	}
 
 	&__text {
 		font-size: 2.5rem;
@@ -120,6 +153,7 @@ html {
 		}
 
 		&--addImage {
+			min-height: 20rem;
 			border: 2px dashed $border-color;
 			display: flex;
 			flex-direction: column;
