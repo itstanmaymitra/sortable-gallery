@@ -20,7 +20,7 @@ html {
 		font-size: 50%;
 	}
 
-	@media only screen and (max-width: 450px) {
+	@media only screen and (max-width: 500px) {
 		font-size: 40%;
 	}
 }
@@ -31,7 +31,7 @@ html {
 
 .container {
 	background-color: $container-bg;
-	max-width: 120rem;
+	max-width: 130rem;
 	margin: 0 auto;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
@@ -82,18 +82,19 @@ html {
 .gallery {
 	padding: 5rem;
 	display: grid;
-	grid-template-columns: repeat(5, minmax(25rem, 1fr));
+	grid-template-columns: repeat(5, minmax(20rem, 1fr));
 	gap: 2rem;
 
 	@media only screen and (max-width: 1000px) {
-		grid-template-columns: repeat(3, minmax(20rem, 1fr));
+		grid-template-columns: repeat(4, minmax(20rem, 1fr));
 	}
 
 	@media only screen and (max-width: 800px) {
-		grid-template-columns: repeat(2, minmax(20rem, 1fr));
+		grid-template-columns: repeat(3, minmax(20rem, 1fr));
 	}
 
-	@media only screen and (max-width: 450px) {
+	@media only screen and (max-width: 600px) {
+		grid-template-columns: repeat(2, minmax(20rem, 1fr));
 		padding: 3rem;
 	}
 
