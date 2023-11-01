@@ -29,7 +29,12 @@ function App() {
 				distance: 5,
 			},
 		}),
-		useSensor(TouchSensor)
+		useSensor(TouchSensor, {
+			activationConstraint: {
+				delay: 200,
+				tolerance: 5,
+			},
+		})
 	);
 
 	useEffect(() => {
